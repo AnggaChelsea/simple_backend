@@ -48,6 +48,13 @@ class VideoController {
       });
   }
 
+  static delete(req,res) {
+    VideoModel.deleteOne({ _id: req.params.id})
+    .then((video)=>{
+      res.status(200).send({message:'delete succes', data:video})
+    }).catch(err => {res.status(500).send({err})})
+  }
+
 
 
   static getall(req, res){
